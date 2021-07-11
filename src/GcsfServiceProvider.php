@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\gcsfs;
+namespace Drupal\gcsf;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\DependencyInjection\ServiceProviderBase;
@@ -12,7 +12,7 @@ use Drupal\Core\Site\Settings;
  * In the docs for this class, anywhere you see "<scheme>", it can mean either
  * "s3" or "public", depending on which stream is currently being serviced.
  */
-class GcsfsServiceProvider extends ServiceProviderBase {
+class GcsfServiceProvider extends ServiceProviderBase {
 
   /**
    * Modifies existing service definitions.
@@ -24,13 +24,7 @@ class GcsfsServiceProvider extends ServiceProviderBase {
     // Replace the public stream wrapper with GcsfsStream.
     if(Settings::get('gcs.use_file_public')) {
       $container->getDefinition('stream_wrapper.public')
-        ->setClass('Drupal\gcsfs\StreamWrapper\PublicGcsfsStream');
-    }
-    // Replace the public stream wrapper with GcsfsStream.
-    $xxx = Settings::get('gcs.use_file_private');
-    if(Settings::get('gcs.use_file_private') && $container->hasDefinition('stream_wrapper.private')) {
-      $container->getDefinition('stream_wrapper.private')
-        ->setClass('Drupal\gcsfs\StreamWrapper\PrivateGcsfsStream');
+        ->setClass('Drupal\gcsf\StreamWrapper\PublicGcsfsStream');
     }
   }
 

@@ -11,7 +11,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 /**
  * The prefix for our Drupal-cached metadata.
  */
-define('GCSF_CACHE_PREFIX', 'gcsfs:uri:');
+define('GCSF_CACHE_PREFIX', 'gcsf:uri:');
 define('GCSF_CACHE_BIN', 'default');
 define('GCSF_CACHE_TAG', 'gcsfs');
 

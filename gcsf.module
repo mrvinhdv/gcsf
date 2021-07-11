@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains gcsfs.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * The prefix for our Drupal-cached metadata.
+ */
+define('GCSF_CACHE_PREFIX', 'gcsfs:uri:');
+define('GCSF_CACHE_BIN', 'default');
+define('GCSF_CACHE_TAG', 'gcsfs');
+
+
+/**
+ * Implements hook_help().
+ */
+function gcsf_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the gcsfs module.
+    case 'help.page.gcsf':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}

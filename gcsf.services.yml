@@ -1,0 +1,14 @@
+services:
+  gcsf:
+    class: Drupal\gcsfs\GcsfsService
+    arguments: ['@database', '@config.factory', '@datetime.time','@stream_wrapper_manager']
+
+  stream_wrapper.gcsf:
+    class: Drupal\gcsfs\StreamWrapper\GcsfStream
+    tags:
+      - { name: stream_wrapper, scheme: gcs }
+
+  gcsf.path_processor.image_styles:
+    class: Drupal\gcsfs\PathProcessor\GcsfPathProcessorImageStyles
+    tags:
+      - { name: path_processor_inbound, priority: 310 }

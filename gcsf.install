@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Gsc File System module.
+ */
+
+use Drupal\Core\Database\SchemaObjectExistsException;
+use Drupal\Core\Site\Settings;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_requirements().
+ */
+function gcsf_requirements($phase) {
+  $requirements = [];
+  if ($phase == 'install') {
+    if (!class_exists('\Google\Cloud\Storage\StorageClient')) {
+      $requirements['gsc_library'] = [
+        'description' => t('gcsfs require Google cloud storage library.'),
+        'severity' => REQUIREMENT_ERROR,
+      ];
+    }
+  }
+  return $requirements;
+}
+
+/**
+ * Implements hook_schema().
+ */
+function gcsf_schema() {
+  $schema = [];
+  $schema['gcsf_file'] = [
+    'description' => 'Stores metadata about files in gcs.',
+    'fields' => [
+      'uri' => [
+        'description' => 'The gcs URI of the file.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'filemime' => [
+        'description' => "The file's MIME type.",
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'filesize' => [
+        'description' => 'The size of the file in bytes.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'timestamp' => [
+        'description' => 'UNIX timestamp for when the file was added.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['uri'],
+    'indexes' => [
+      'timestamp' => ['timestamp'],
+    ],
+  ];
+
+  return $schema;
+}
+

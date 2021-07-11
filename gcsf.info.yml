@@ -1,0 +1,9 @@
+name: 'Google cloud storage File system'
+type: module
+description: 'Google cloud storage File system'
+
+# Information added by Drupal.org packaging script on 2021-03-19
+version: '8.x-1.0-beta1'
+core: '8.x'
+project: 'gcsfs'
+datestamp: 1492215545

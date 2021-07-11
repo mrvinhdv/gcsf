@@ -1,0 +1,22 @@
+{
+    "name": "drupal/gcsfs",
+    "type": "drupal-module",
+    "description": "Adds an Google cloud storage remote file system to Drupal.e",
+    "authors": [
+        {
+            "name": "Vĩnh Dương (o0mrvinh0o)",
+            "homepage": "https://www.drupal.org/u/o0mrvinh0o",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://www.drupal.org/project/gcsfs",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/gcsfs",
+        "source": "http://cgit.drupalcode.org/gcsfs"
+    },
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "google/cloud-storage": "~1.17"
+    }
+}

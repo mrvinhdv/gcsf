@@ -4,11 +4,11 @@ services:
     arguments: ['@database', '@config.factory', '@datetime.time','@stream_wrapper_manager']
 
   stream_wrapper.gcsf:
-    class: Drupal\gcsfs\StreamWrapper\GcsfStream
+    class: Drupal\gcsf\StreamWrapper\GcsfStream
     tags:
       - { name: stream_wrapper, scheme: gcs }
 
   gcsf.path_processor.image_styles:
-    class: Drupal\gcsfs\PathProcessor\GcsfPathProcessorImageStyles
+    class: Drupal\gcsf\PathProcessor\GcsfPathProcessorImageStyles
     tags:
       - { name: path_processor_inbound, priority: 310 }
